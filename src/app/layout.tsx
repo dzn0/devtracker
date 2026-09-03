@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { CodeXml, House, ChartBar, ListCollapse, ChartNoAxesCombined, Calendar1, Bolt } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +24,23 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body>
+        <div className="flex h-screen">
+          <aside className="w-75 bg-surface py-9 flex flex-col gap-12 hidden md:flex">
+            <p className="text-accent text-2xl font-medium flex items-center gap-3 px-5">
+              <CodeXml strokeWidth={2.5} size={37} className="shrink-0"/>Devtracker
+              </p>
+            <nav className="flex flex-col gap-4 items-start px-3">
+             <a href="/" className="flex items-center gap-2 font-medium text-lg bg-accent/20 rounded-lg p-3 w-full"><House size={27} />Dashboard</a>
+             <a href="/" className="flex items-center gap-2 font-medium text-lg p-3 rounded-lg w-full hover:bg-accent/10"><ListCollapse size={27} />Sessões</a>
+             <a href="/" className="flex items-center gap-2 font-medium text-lg p-3 rounded-lg w-full hover:bg-accent/10"><ChartNoAxesCombined size={27} />Estatísticas</a>
+             <a href="/" className="flex items-center gap-2 font-medium text-lg p-3 rounded-lg w-full hover:bg-accent/10"><Calendar1 size={27} />Calendário</a>
+             <a href="/" className="flex items-center gap-2 font-medium text-lg p-3 rounded-lg w-full hover:bg-accent/10"><Bolt size={27} />Configurações</a>
+            </nav>
+          </aside>
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

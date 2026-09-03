@@ -13,6 +13,38 @@ Projeto de portfólio para aprender a stack TypeScript → React → Next.js →
 ## Estilo visual
 Dark theme, paleta inspirada no GitHub dark + roxo como cor de destaque (accent). Ver `--color-*` em `src/app/globals.css`.
 
+# Tags HTML
+
+| Tag | Significa | Como renderiza |
+|---|---|---|
+| `<div>` | divisão genérica, sem significado próprio | bloco sem estilo, quebra linha antes/depois |
+| `<span>` | trecho genérico, sem significado próprio | inline, não quebra linha, fica no meio do texto |
+| `<header>` | cabeçalho da página/seção | bloco, geralmente topo |
+| `<footer>` | rodapé da página/seção | bloco, geralmente fim |
+| `<nav>` | agrupa links de navegação | bloco, sem estilo próprio visível |
+| `<aside>` | conteúdo secundário/lateral | bloco, sem estilo próprio visível |
+| `<main>` | conteúdo principal da página (único por página) | bloco |
+| `<section>` | agrupa um bloco temático de conteúdo | bloco |
+| `<a href="...">` | link, navega para outra URL | inline, sublinhado azul por padrão |
+| `<button>` | botão clicável | inline-block, com borda/fundo padrão do navegador |
+| `<ul>` / `<li>` | lista não ordenada / item da lista | `<ul>` bloco, `<li>` com marcador (•) antes |
+| `<ol>` / `<li>` | lista ordenada / item da lista | igual `<ul>`, mas marcador numérico (1. 2. 3.) |
+| `<h1>`...`<h6>` | títulos, do mais (`h1`) ao menos (`h6`) importante | bloco, negrito, tamanho decrescente |
+| `<p>` | parágrafo de texto | bloco, com margem acima/abaixo |
+| `<img src="..." alt="...">` | imagem | inline, sem fechamento (`/>` ou nada) |
+| `<input>` | campo de formulário | inline-block, caixa de texto/checkbox/etc |
+| `<label>` | rótulo de um campo de formulário | inline, texto associado a um `<input>` |
+| `<form>` | agrupa campos de um formulário | bloco |
+
+Exemplo de como um trecho comum fica montado:
+```html
+<nav>
+  <a href="/">Dashboard</a>
+  <a href="/sessoes">Sessões</a>
+</nav>
+```
+Renderiza como dois links um do lado do outro (porque `<a>` é inline), sem estilo — texto azul sublinhado, um espaço entre eles vindo da quebra de linha no código.
+
 # Stack Planejada
 **TypeScript → React → Next.js → Tailwind → Node → Postgres/Prisma**
 
