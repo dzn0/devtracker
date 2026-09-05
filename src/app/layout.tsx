@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { CodeXml, House, ChartBar, ListCollapse, ChartNoAxesCombined, Calendar1, Bolt } from "lucide-react";
-
+import { CodeXml, House, ChartBar, ListCollapse, ChartNoAxesCombined, Calendar1, Bolt, ChevronDown  } from "lucide-react";
+import Link from "next/link"
+import { motion } from "motion/react"
+ 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,21 +27,44 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body>
-        <div className="flex h-screen">
-          <aside className="w-75 bg-surface py-9 flex flex-col gap-12 hidden md:flex">
-            <p className="text-accent text-2xl font-medium flex items-center gap-3 px-5">
-              <CodeXml strokeWidth={2.5} size={37} className="shrink-0"/>Devtracker
-              </p>
-            <nav className="flex flex-col gap-4 items-start px-3">
-             <a href="/" className="flex items-center gap-2 font-medium text-lg bg-accent/20 rounded-lg p-3 w-full"><House size={27} />Dashboard</a>
-             <a href="/" className="flex items-center gap-2 font-medium text-lg p-3 rounded-lg w-full hover:bg-accent/10"><ListCollapse size={27} />Sessões</a>
-             <a href="/" className="flex items-center gap-2 font-medium text-lg p-3 rounded-lg w-full hover:bg-accent/10"><ChartNoAxesCombined size={27} />Estatísticas</a>
-             <a href="/" className="flex items-center gap-2 font-medium text-lg p-3 rounded-lg w-full hover:bg-accent/10"><Calendar1 size={27} />Calendário</a>
-             <a href="/" className="flex items-center gap-2 font-medium text-lg p-3 rounded-lg w-full hover:bg-accent/10"><Bolt size={27} />Configurações</a>
-            </nav>
-          </aside>
-          {children}
+        <div>
+        <header className="border border-border flex items-center justify-between bg-surface rounded-3xl px-10 max-w-[1600px] mx-auto my-6">
+          <Link href="/" className="flex items-center gap-2 font-bold text-xl transition-transform duration-200 hover:scale-95 active:scale-80"><CodeXml size={34} className="text-accent" strokeWidth={2.5} />
+          <span className="hidden md:inline font-bold">Devtracker</span>
+          </Link>
+          <nav className="flex items-center gap-4">
+            <Link href="/" className="flex items-center gap-1 text-lg p-3 hover:bg-accent/40 rounded-lg transition-transform duration-200 hover:scale-95 active:scale-80">
+            <House size={20}/>
+            <span className="hidden md:inline">Dashboard</span>
+            </Link>
+            <Link href="/sessoes" className="flex items-center gap-1 text-lg p-3 hover:bg-accent/40 rounded-lg transition-transform duration-200 hover:scale-95 active:scale-80">
+            <ListCollapse size={20}/>
+            <span className="hidden md:inline">Sessões</span>
+            </Link>
+            <Link href="/" className="flex items-center gap-1 text-lg p-3 hover:bg-accent/40 rounded-lg transition-transform duration-200 hover:scale-95 active:scale-80">
+            <ChartNoAxesCombined size={20}/>
+            <span className="hidden md:inline">Estatísticas</span>
+            </Link>
+            <Link href="/" className="flex items-center gap-1 text-lg p-3 hover:bg-accent/40 rounded-lg transition-transform duration-200 hover:scale-95 active:scale-80">
+            <Calendar1 size={20}/>
+            <span className="hidden md:inline">Calendário</span>
+            </Link>
+            <Link href="/" className="flex items-center gap-1 text-lg p-3 hover:bg-accent/40 rounded-lg transition-transform duration-200 hover:scale-95 active:scale-80">
+            <Bolt size={20}/>
+            <span className="hidden md:inline">Configurações</span>
+            </Link>
+          </nav>
+          <div className="flex items-center gap-2 cursor-pointer link hover:bg-accent/40 rounded-lg p-3 transition-transform duration-200 hover:scale-95 active:scale-80">
+            <div className="bg-accent/20 rounded-full p-3"><CodeXml size={26}/></div>
+            <div className="flex flex-col">
+              <span className="">Dev</span>
+              <span className="text-muted hidden md:inline">Desenvolvedor</span>
+            </div>
+            <ChevronDown size={16} className="text-muted hidden md:inline"/>
+          </div>
+        </header>
         </div>
+        {children}
       </body>
     </html>
   );

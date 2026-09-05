@@ -36,6 +36,30 @@ Dark theme, paleta inspirada no GitHub dark + roxo como cor de destaque (accent)
 | `<label>` | rótulo de um campo de formulário | inline, texto associado a um `<input>` |
 | `<form>` | agrupa campos de um formulário | bloco |
 
+## Tags de texto
+
+| Tag | Significa | Como renderiza |
+|---|---|---|
+| `<a href="...">` | link, navega para outra URL (já listado acima) | inline, azul sublinhado por padrão |
+| `<strong>` | texto de importância forte | inline, **negrito** |
+| `<b>` | texto destacado (sem peso semântico de importância) | inline, **negrito** |
+| `<em>` | ênfase | inline, *itálico* |
+| `<i>` | texto em voz/estilo diferente (sem ênfase semântica) | inline, *itálico* |
+| `<small>` | texto secundário/legal | inline, fonte menor |
+| `<mark>` | texto marcado/destacado | inline, fundo amarelo por padrão |
+| `<del>` | texto removido | inline, ~~riscado~~ |
+| `<ins>` | texto inserido | inline, sublinhado |
+| `<sub>` | subscrito | inline, menor e abaixo da linha (ex: H₂O) |
+| `<sup>` | sobrescrito | inline, menor e acima da linha (ex: x²) |
+| `<code>` | trecho de código | inline, fonte monoespaçada |
+| `<pre>` | texto pré-formatado (preserva espaços/quebras) | bloco, fonte monoespaçada |
+| `<blockquote>` | citação longa | bloco, com margem/recuo |
+| `<q>` | citação curta | inline, aspas automáticas |
+| `<abbr title="...">` | abreviação/sigla | inline, sublinhado pontilhado, mostra `title` no hover |
+| `<br>` | quebra de linha forçada | não tem conteúdo, só quebra a linha |
+| `<hr>` | linha divisória horizontal | bloco, linha fina |
+| `<time datetime="...">` | data/hora legível por máquina | inline, sem estilo próprio |
+
 Exemplo de como um trecho comum fica montado:
 ```html
 <nav>
@@ -44,6 +68,45 @@ Exemplo de como um trecho comum fica montado:
 </nav>
 ```
 Renderiza como dois links um do lado do outro (porque `<a>` é inline), sem estilo — texto azul sublinhado, um espaço entre eles vindo da quebra de linha no código.
+
+# Escalas Tailwind (mais usadas)
+
+## Espaçamento (padding, margin, gap, width, height...)
+| Classe | rem | px |
+|---|---|---|
+| `1` | 0.25rem | 4px |
+| `2` | 0.5rem | 8px |
+| `3` | 0.75rem | 12px |
+| `4` | 1rem | 16px |
+| `6` | 1.5rem | 24px |
+| `8` | 2rem | 32px |
+| `10` | 2.5rem | 40px |
+| `12` | 3rem | 48px |
+| `16` | 4rem | 64px |
+| `20` | 5rem | 80px |
+| `24` | 6rem | 96px |
+
+Direções: `p`/`m` (todos os lados), `x` (horizontal), `y` (vertical), `t`/`b`/`l`/`r` (um lado só). Ex: `px-4`, `mt-8`.
+
+## Tamanho de texto (`text-*`)
+`xs` < `sm` < `base` (padrão) < `lg` < `xl` < `2xl` < `3xl` < `4xl`...
+
+## Peso da fonte (`font-*`)
+`thin` (100) < `light` (300) < `normal` (400, padrão) < `medium` (500) < `semibold` (600) < `bold` (700) < `black` (900)
+
+## Arredondamento (`rounded-*`)
+`sm` < padrão (sem sufixo) < `md` < `lg` < `xl` < `2xl` < `3xl` < `full` (círculo/pílula)
+
+## Largura máxima (`max-w-*`)
+`sm` (384px) < `md` (448px) < `lg` (512px) < `xl` (576px) < `2xl` (672px) < ... < `7xl` (1280px, o maior nomeado)
+
+## Breakpoints (responsividade, `sm:`/`md:`/etc, sempre "a partir de")
+`sm` 640px | `md` 768px | `lg` 1024px | `xl` 1280px | `2xl` 1536px
+
+Inverso (só **abaixo** de um tamanho): prefixo `max-` — ex: `max-md:hidden`.
+
+## Cursor (`cursor-*`)
+`pointer` (clicável) | `default` (seta normal) | `not-allowed` (bloqueado) | `wait` (carregando) | `text` (seleção de texto)
 
 # Stack Planejada
 **TypeScript → React → Next.js → Tailwind → Node → Postgres/Prisma**
