@@ -101,7 +101,15 @@ Direções: `p`/`m` (todos os lados), `x` (horizontal), `y` (vertical), `t`/`b`/
 `sm` (384px) < `md` (448px) < `lg` (512px) < `xl` (576px) < `2xl` (672px) < ... < `7xl` (1280px, o maior nomeado)
 
 ## Breakpoints (responsividade, `sm:`/`md:`/etc, sempre "a partir de")
-`sm` 640px | `md` 768px | `lg` 1024px | `xl` 1280px | `2xl` 1536px
+
+| Prefixo | Largura mínima |
+|---|---|
+| (nenhum) | 0px (mobile, padrão) |
+| `sm:` | 640px |
+| `md:` | 768px |
+| `lg:` | 1024px |
+| `xl:` | 1280px |
+| `2xl:` | 1536px |
 
 Inverso (só **abaixo** de um tamanho): prefixo `max-` — ex: `max-md:hidden`.
 

@@ -1,4 +1,4 @@
-import { Clock, BarChart3, Flame, Trophy, Plus, ChevronDown, FileBraces, CodeXml, CalendarSearch, Star, Download } from "lucide-react";
+import { Clock, BarChart3, Flame, Trophy, Plus, ChevronDown, FileBraces, CodeXml, CalendarSearch, Star, Download, Search } from "lucide-react";
 
 export default function Sessoes() {
     return (
@@ -13,9 +13,12 @@ export default function Sessoes() {
                     <button className="flex items-center gap-1 cursor-pointer font-medium bg-nova-sessao/60 border border-border p-4 rounded-4xl transition-transform duration-200 hover:scale-95 active:scale-80"><Plus size={24} />Nova sessão</button>
                 </div>
             </div>
-            {/* Card resumo rapido */}
-                <div className="flex flex-col max-w-[1500px] mx-auto mt-8">
-                    <div className="flex flex-col bg-surface p-3 rounded-2xl mr-300 border border-border">
+            {/* Coluna esquerda (Resumo rapido + Filtros) e caixa de busca */}
+            <div className="flex gap-6 max-w-[1500px] mx-auto mt-8 items-start">
+                {/* Coluna esquerda: largura definida pelo item mais largo (stretch do flex-col) */}
+                <div className="flex flex-col gap-3 shrink-0">
+                    {/* Card resumo rapido */}
+                    <div className="flex flex-col bg-surface p-3 rounded-2xl border border-border">
                         <h2 className="text-2xl">Resumo rápido</h2>
                         {/* Total hours + Clock div*/}
                         <div className="flex mt-3 gap-3 text-xl items-center">
@@ -50,51 +53,57 @@ export default function Sessoes() {
                             </div>
                         </div>
                     </div>
+                    {/* Card filtros */}
+                    <div className="bg-surface rounded-2xl border border-border p-3">
+                        {/* Filtros/Limpar-Filtros */}
+                        <div className="flex items-center gap-29">
+                            <h2 className="text-2xl">Filtros</h2>
+                            <p className="text-sm text-accent font-medium cursor-pointer transition-transform duration-200 hover:scale-95 active:scale-75">Limpar Filtros</p>
+                        </div>
+                        {/* Tecnologias/Select-Box */}
+                        <div>
+                            <p className="mt-4 text-base">Tecnologia</p>
+                            {/* button #1 */}
+                            <div className="">
+                                <button className="cursor-pointer transition-transform duration-200 text-muted hover:scale-95 gap-2 flex items-center bg-background w-full rounded-lg border border-border p-2">
+                                    <CodeXml size={19} className="" />
+                                    Todas as tecnologias
+                                    <ChevronDown className="ml-auto" />
+                                </button>
+                            </div>
+                            {/* button #2 */}
+                            <p className="mt-4 text-base">Período</p>
+                            <div className="">
+                                <button className="cursor-pointer transition-transform duration-200 text-muted hover:scale-95 flex items-center gap-2 bg-background w-full rounded-lg border border-border p-2">
+                                    <CalendarSearch size={19} />
+                                    Todos os períodos
+                                    <ChevronDown className="ml-auto" />
+                                </button>
+                            </div>
+                            {/* button #3 */}
+                            <p className="mt-4 text-base">Nota</p>
+                            <div className="">
+                                <button className="cursor-pointer transition-transform duration-200 text-muted hover:scale-95 flex items-center gap-2 bg-background w-full rounded-lg border border-border p-2">
+                                    <Star size={19} />
+                                    Todas as notas
+                                    <ChevronDown className="ml-auto" />
+                                </button>
+                            </div>
+                        </div>
+                        <div className="bg-surface mt-10">
+                            <button className="flex items-center gap-3 mx-auto bg-nova-sessao p-3 rounded-xl transition-transform duration-200 hover:scale-95 active:scale-75 cursor-pointer">
+                                <Download />
+                                Exportar dados
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            {/* Card filtros */}
-            <div className="flex flex-col max-w-[1500px] mx-auto mt-2">
-                <div className="bg-surface mr-300 rounded-2xl border border-border p-3">
-                    {/* Filtros/Limpar-Filtros */}
-                    <div className="flex items-center gap-29">
-                        <h2 className="text-2xl">Filtros</h2>
-                        <p className="text-sm text-accent font-medium cursor-pointer transition-transform duration-200 hover:scale-95 active:scale-75">Limpar Filtros</p>
-                    </div>
-                    {/* Tecnologias/Select-Box */}
-                    <div>
-                        <p className="mt-4 text-base">Tecnologia</p>
-                        {/* button #1 */}
-                        <div className="">
-                            <button className="cursor-pointer transition-transform duration-200 text-muted hover:scale-95 gap-2 flex items-center bg-background w-full rounded-lg border border-border p-2">
-                                <CodeXml size={19} className="" />
-                                Todas as tecnologias
-                                <ChevronDown className="ml-auto" />
-                            </button>
-                        </div>
-                        {/* button #2 */}
-                        <p className="mt-4 text-base">Período</p>
-                        <div className="">
-                            <button className="cursor-pointer transition-transform duration-200 text-muted hover:scale-95 flex items-center gap-2 bg-background w-full rounded-lg border border-border p-2">
-                                <CalendarSearch size={19} />
-                                Todos os períodos
-                                <ChevronDown className="ml-auto" />
-                            </button>
-                        </div>
-                        {/* button #3 */}
-                        <p className="mt-4 text-base">Nota</p>
-                        <div className="">
-                            <button className="cursor-pointer transition-transform duration-200 text-muted hover:scale-95 flex items-center gap-2 bg-background w-full rounded-lg border border-border p-2">
-                                <Star size={19} />
-                                Todas as notas
-                                <ChevronDown className="ml-auto" />
-                            </button>
-                        </div>
-                    </div>
-                    <div className="bg-surface mt-10">
-                        <button className="flex items-center gap-3 mx-auto bg-nova-sessao p-3 rounded-xl transition-transform duration-200 hover:scale-95 active:scale-75 cursor-pointer">
-                            <Download />
-                            Exportar dados
-                        </button>
-                    </div>
+                {/* Coluna direita: caixa de busca */}
+                <div className="bg-surface rounded-2xl border border-border p-3 flex-1 flex">
+                    <button className="p-2 bg-background pr-70 border border-border rounded-xl flex cursor-text">
+                        <Search/>
+                        <span className="pl-2 text-muted">Procurar sessões</span>
+                    </button>
                 </div>
             </div>
         </div>
